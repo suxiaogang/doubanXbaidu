@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "豆瓣+百度网盘™",
+  "description": "在豆瓣电影,音乐,读书条目页面显示百度网盘搜索结果",
+  "version": "1.4",
+  "icons": {
+    "16": "static/icons/icon_128.png",
+    "48": "static/icons/icon_128.png",
+    "128": "static/icons/icon_128.png"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+    	"http://*.movie.douban.com/subject/*",
+    	"http://*.book.douban.com/subject/*",
+    	"http://*.music.douban.com/subject/*"
+      ],
+      "css": ["static/css/bootstrap.min.css"],
+      "js": ["static/js/jquery.js", "static/js/contentscript.js"]
+    }
+  ],
+  "options_page": "options.html",
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    "static/icons/icon_128.png"
+  ],
+  "permissions": [
+    "http://*.baidu.com/*"
+  ]
+}
