@@ -7,6 +7,26 @@
 <img width="720px" src="http://ww2.sinaimg.cn/large/5fd37818jw1e8g5xy3ni1j20ud0hkn1q.jpg">
 <img width="720px" src="http://ww1.sinaimg.cn/large/5fd37818jw1e8g5y8y9u9j20so0jjwj8.jpg">
 
+####更新记录
+```
+2013-09-16 v1.4
+紧急修复不能正常显示搜索结果的bug
+
+2013-09-07 v1.3
+增加搜索框,可在条目页面内搜索任意关键字
+其他bug修复,优化
+
+2013-09-02 v1.2
+更换图标为du熊
+移除工具栏按钮,改为'选项'页
+修复条目下讨论页面内依旧显示搜索结果的bug
+体积更小,速度更快
+
+2013-08-25 v1.1
+修改搜索关键字判断错误的bug
+```
+
+
 ####感谢
 
 *  图标来自[ABKer](http://dribbble.com/shots/1003774-baidu)
