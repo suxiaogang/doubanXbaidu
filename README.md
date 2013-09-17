@@ -4,8 +4,8 @@
 直接安装请访问: [Chrome Webstore](https://chrome.google.com/webstore/detail/%E8%B1%86%E7%93%A3%20%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/phnkdkohjfmfbokjogjfbfmcfocfkebk?hl=zh-CN&gl=CN)
 
 ####截图
-<img width="850px" src="http://ww2.sinaimg.cn/large/5fd37818jw1e8g5xy3ni1j20ud0hkn1q.jpg">
-<img width="850px" src="http://ww1.sinaimg.cn/large/5fd37818jw1e8g5y8y9u9j20so0jjwj8.jpg">
+<img width="720px" src="http://ww2.sinaimg.cn/large/5fd37818jw1e8g5xy3ni1j20ud0hkn1q.jpg">
+<img width="720px" src="http://ww1.sinaimg.cn/large/5fd37818jw1e8g5y8y9u9j20so0jjwj8.jpg">
 
 ####感谢
 
