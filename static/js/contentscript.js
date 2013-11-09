@@ -1,7 +1,21 @@
-//电影条目讨论页面,豆列页面不显示搜索结果
+//过滤掉不显示注入结果的页面.
 var currentURL = document.URL;
-if(currentURL.indexOf('discussion') != -1 || currentURL.indexOf('doulist') != -1 ){
-	return;
+if(currentURL.indexOf('discussion') != -1  
+	|| currentURL.indexOf('doulist') != -1 //推荐****的豆列
+	|| currentURL.indexOf('collections') != -1 //看过"****"的豆瓣成员
+	|| currentURL.indexOf('wishes') != -1 //想看"****"的豆瓣成员
+	|| currentURL.indexOf('review') != -1 //影评 review
+	|| currentURL.indexOf('mupload') != -1 //海报 mupload
+	|| currentURL.indexOf('all_photos') != -1 //全部图片 all_photos
+	|| currentURL.indexOf('new_review') != -1 //
+	|| currentURL.indexOf('comments') != -1 //comments
+	|| currentURL.indexOf('group_collectors') != -1 //group_collectors
+	|| currentURL.indexOf('offers') != -1 //offers
+	|| currentURL.indexOf('new_offer') != -1 //new_offer
+	|| currentURL.indexOf('doings') != -1 //doings
+	)
+{
+  return;
 } else {
 	inject();
 }
@@ -11,13 +25,16 @@ function inject(){
 	var keyword = title.replace( '(豆瓣)', '' ).trim();
 	var dck = encodeURIComponent(keyword);
 	var imgURL = chrome.extension.getURL("static/icons/icon_128.png");
-
+	
+	var imgPlus = "http://img3.douban.com/pics/add-doulist.gif";
+	var imgMinus = chrome.extension.getURL("static/icons/-.gif");
+	
 	var html_title =  '<div id="dbbd" class="da3" style="margin-bottom:0px;padding-bottom:1px;background-color:#E9F3FA;">'
 		+ '<dl><dt style="display:inline;font-size:11px;color:#999">'
 		+ '<img id="toggleIMG" src="'+imgURL+'" style="margin-bottom:1px;margin-right:5px;width:16px;/>'
 		+ '<b style="color:#888">' + keyword + '</b> 的搜索结果· · ·</dt> [' 
 		+ '<a href="http://www.baidu.com/s?wd='+dck+'+site%3Apan.baidu.com" target="_blank">全部</a>'
-		+ ']<img style="float:right;margin-top:4px;cursor:pointer;opacity:0.3;" id="toggleIcon" src="http://img3.douban.com/pics/add-doulist.gif" title="试试其他关键字?">'
+		+ ']<img style="float:right;margin-top:4px;cursor:pointer;opacity:0.3;" id="toggleIcon" src="'+ imgPlus +'" title="试试其他关键字?">'
 
 	    + '<div id="baidu-search" style="display:none">'
 		+ '	<input id="query-keywords" type="text">'
@@ -59,7 +76,15 @@ function inject(){
 	
 	var toggle_more_button = document.getElementById("toggleIcon");
 	toggle_more_button.addEventListener("click", function() {
-		$('#baidu-search').fadeToggle("fast");
+	  var origsrc = $(this).attr('src');
+        var src = '';
+        if (origsrc == imgPlus) {
+        	src = imgMinus;
+        } else {
+        	src = imgPlus;
+        }
+        $(this).attr('src', src);
+	  $('#baidu-search').fadeToggle("fast");
 	}, false);
 
 	var submit_search = document.getElementById("searchIcon");
