@@ -13,6 +13,7 @@ if(currentURL.indexOf('discussion') != -1
 	|| currentURL.indexOf('offers') != -1 //offers
 	|| currentURL.indexOf('new_offer') != -1 //new_offer
 	|| currentURL.indexOf('doings') != -1 //doings
+	|| currentURL.indexOf('questions') != -1//questions
 	)
 {
   return;
@@ -50,9 +51,9 @@ function inject(){
 		dataType: "html",
 		success: function(data){
 			for(var i = 1; i < 6; i ++){
-				var content = "#content_left table#" + i + " tr td.c-default div.c-abstract";
+				var content = "#content_left div#" + i + " div.c-abstract";
 				var tempTitle = $(content, data).text().replace("文件名:", "");
-				var tempURL = $("#content_left table#" + i + " tr td.c-default h3.t a", data).attr("href");
+				var tempURL = $("#content_left div#" + i + " h3.t a", data).attr("href");
 				//搜索结果不为空时,加载显示...
 				if (tempTitle != "") {
 					$("ul.bdresult").append('<li><span class="badge badge-error">'+ i +'</span><a href='+tempURL+' target="_blank">' + tempTitle + '</li>');
