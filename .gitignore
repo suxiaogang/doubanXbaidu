@@ -1,0 +1,33 @@
+# ignore all bin directories
+# matches "bin" in any subfolder
+# generated files
+bin/
+gen/
+
+# ignore all target directories
+# Maven
+log/
+target/
+target/
+
+# Java class files
+*.class
+# ignore all files ending with ~
+*~ 
+
+# Mac
+.DS_Store
+
+# Eclipse project files
+.classpath
+.project
+.settings
+
+# PDT-specific
+.buildpath
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
