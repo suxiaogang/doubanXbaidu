@@ -8,7 +8,6 @@
     "48": "static/icons/icon_128.png",
     "128": "static/icons/icon_128.png"
   },
-  "options_page": "options.html",
   "content_scripts": [
     {
       "matches": [
