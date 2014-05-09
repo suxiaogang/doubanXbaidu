@@ -101,8 +101,6 @@ h5{
 	color:#999;
 }
 
-/*-----------------------пе╥Б--------------------------- */
-
 #send_email_feedback_wrap{
 	background: url(../icons/border.png) 8px 0 repeat;
 	padding:5px;
@@ -130,4 +128,10 @@ h5{
 .w1000 li{
 	margin-top:5px;
 	margin-bottom:5px;
+}
+
+#qr{
+	margin-left:12px;
+	display:none;
+	
 }

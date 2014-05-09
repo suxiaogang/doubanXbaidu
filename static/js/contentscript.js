@@ -1,23 +1,24 @@
+/* 
+* @Author: sam_su
+* @Date:   2014-05-09 10:20
+* =_=! Sorry! I write JavaScript code with a lit bit of Java style
+*/
+
 //过滤掉不显示注入结果的页面.
 var currentURL = document.URL;
-if(currentURL.indexOf('discussion') != -1  
-	|| currentURL.indexOf('doulist') != -1 //推荐****的豆列
-	|| currentURL.indexOf('collections') != -1 //看过"****"的豆瓣成员
-	|| currentURL.indexOf('wishes') != -1 //想看"****"的豆瓣成员
-	|| currentURL.indexOf('review') != -1 //影评 review
-	|| currentURL.indexOf('mupload') != -1 //海报 mupload
-	|| currentURL.indexOf('all_photos') != -1 //全部图片 all_photos
-	|| currentURL.indexOf('new_review') != -1 //
-	|| currentURL.indexOf('comments') != -1 //comments
-	|| currentURL.indexOf('group_collectors') != -1 //group_collectors
-	|| currentURL.indexOf('offers') != -1 //offers
-	|| currentURL.indexOf('new_offer') != -1 //new_offer
-	|| currentURL.indexOf('doings') != -1 //doings
-	|| currentURL.indexOf('questions') != -1//questions
-	)
-{
-  return;
-} else {
+var do_not_inject_page = new Array(
+		"discussion","doulist","collections","wishes","review","mupload","all_photos",
+		"new_review","comments","group_collectors","offers","new_offer","doings","questions");
+
+var flag = true;
+for (var i = 0; i < do_not_inject_page.length; i++) {
+	if(currentURL.indexOf(do_not_inject_page[i]) != -1){
+		flag = false;
+		return;
+	}
+}
+
+if(flag){
 	inject();
 }
 
@@ -29,17 +30,19 @@ function inject(){
 	
 	var imgPlus = "http://img3.douban.com/pics/add-doulist.gif";
 	var imgMinus = chrome.extension.getURL("static/icons/-.gif");
+
+	var optionURL = chrome.extension.getURL('options.html');
 	
 	var html_title =  '<div id="dbbd" class="da3" style="margin-bottom:0px;padding-bottom:1px;background-color:#E9F3FA;">'
-		+ '<dl><dt style="display:inline;font-size:11px;color:#999">'
-		+ '<img id="toggleIMG" src="'+imgURL+'" style="margin-bottom:1px;margin-right:5px;width:16px;/>'
+		+ '<dl><dt style="display:inline;font-size:11px;color:#888;font-weight:bold;">'
+		+ '<img id="toggleIMG" src="'+imgURL+'" style="margin-bottom:-3px;margin-right:5px;width:16px;cursor:pointer;" onclick="javascript:window.open('+"'"+optionURL+"'"+');">'
 		+ '<b style="color:#888">' + keyword + '</b> 的搜索结果· · ·</dt> [' 
 		+ '<a href="http://www.baidu.com/s?wd='+dck+'+site%3Apan.baidu.com" target="_blank">全部</a>'
 		+ ']<img style="float:right;margin-top:4px;cursor:pointer;opacity:0.3;" id="toggleIcon" src="'+ imgPlus +'" title="试试其他关键字?">'
 
 	    + '<div id="baidu-search" style="display:none">'
 		+ '	<input id="query-keywords" type="text">'
-		+ '	<img id="searchIcon" src="http://img3.douban.com/pics/icon/bn_srh_1.png" style="cursor:pointer">'
+		+ '	<img id="searchIcon" src="http://img3.douban.com/pics/icon/bn_srh_1.png" style="cursor:pointer;margin-top:-70px;">'
 		+ '</div>'
 
 		+ '</dl></div>';

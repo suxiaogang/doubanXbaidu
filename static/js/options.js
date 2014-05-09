@@ -16,6 +16,10 @@ function github() {
     window.open(_url);
 }
 
+function toggleWechat(){
+	$("#qr").slideToggle("normal");
+}
+
 function toggleUL() {
 	$('.nav-tabs li').click(
 		function() {
@@ -39,6 +43,7 @@ $(document).ready(function(){
 	$("#avatar").click(douyou);
 	$("#weibo").click(weibo);
 	$("#github").click(github);
+	$("#toggleWechat").click(toggleWechat);//
 	//切换显示
 	toggleUL();
 });
