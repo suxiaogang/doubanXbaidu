@@ -1,67 +1,98 @@
-html, body{
-	height: 100%;
+a{
+	color:#AFAFAF;
 }
-
+a:hover {
+	text-decoration: none;
+	-webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    transition: 0.2s;
+}
+a:focus,a:active{
+	text-decoration: none;
+	outline:0 !important;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-	background-color: #FFF;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background-color: #EDEFF0;
+  font-size:12px;
 }
-
-/* Wrapper for page content to push down footer */
-#wrap {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	/* Negative indent footer by it's height */
-	margin: 0 auto -70px;
+.nav{
+	display:block;
+	min-height:400px;
+	background-color: #fff;
+	border-radius: 5px;
+	padding:20px 50px 50px 50px;
+	margin:50px;
+	z-index:100;
+	color:#555;
 }
-
-/* Set the fixed height of the footer here */
-#push,
-#footer {
-	height:70px;
+.nav li{
+	margin:10px;
 }
-#footer {
-	background-color: #999;
-	background-image: url("chrome-extension://__MSG_@@extension_id__/static/icons/footerbg.png");
-	font-size:13px;
-	color:#999;
-	border-top:2px solid #888;
+.nav li a{
+	color:#000;
+	padding:3px 5px 3px 5px;
+	border-radius: 3px;
+	-webkit-transition: all .6s;
+	background-color:rgba(64, 150, 238, 0.12);
 }
-
-#footer a{
-	color:#999;
+.nav li a:active{
+	text-decoration: none;
 }
-#footer a:hover{
-	background-color: transparent;
-	text-decoration:none;
+.nav li a:hover{
 	color:#FFF;
+	background-color:#4096EE;
 }
 
-/* Lastly, apply responsive CSS fixes as necessary */
-@media (max-width: 767px) {
-	#footer {
-	  margin-left: -20px;
-	  margin-right: -20px;
-	  padding-left: 20px;
-	  padding-right: 20px;
-	}
+h5{
+	margin:20px 0px 20px 0px;
+	font-weight:bold;
+}
+#send_email_feedback_wrap{
+	background: url(../icons/border.png) 8px 0 repeat;
+	padding:5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	color: #555;text-shadow:none;
+}
+#send_email_feedback{
+	background: #fff;
+	padding: 20px;
+}
+/***footer***/
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  font-size:12px;
+  background-color: #999;
+  background-image: url("chrome-extension://__MSG_@@extension_id__/static/icons/footerbg.png");
 }
 
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-.container {
-	width: auto;
-	max-width: 680px;
+.footer p{
+  margin-top:20px;
+  color:#C5C5C5;
 }
-.container .credit {
-	margin: 20px 0;
+.footer p a{
+  color:#C5C5C5;
+  margin-left:3px;
+  margin-right:3px;
 }
-
-.well{
-	margin-top:20px;
-	padding:20px;
+.footer p a:hover{
+  color:#888;
+}
+.footer .fa-heart{
+  color:red;
 }
 #avatar {
 	height:30px;
@@ -71,67 +102,25 @@ body {
 	padding: 2px;
 	background: rgb(82, 146, 103);
 }
-
 #avatar:hover{
 	-webkit-transition:All 0.5s ease;
 	-webkit-transform:rotate(360deg);
 	cursor:pointer;
 }
-
+#qr{
+	display:none;	
+}
 #weibo, #github {
 	opacity:0.5;
 	margin-left:3px;
 	margin-bottom:4px;
+	-webkit-transition: all .6s;
 }
-
 #weibo:hover, #github:hover{
 	cursor:pointer;
 	opacity:1;
 }
-
-h4{
-	font-size:13px;
-	font-weight:normal;
-	color:#8B7D6B;
-}
-h5{
-	font-size:11px;
-	font-weight:normal;
-	margin-left:15px;
-	color:#999;
-}
-
-#send_email_feedback_wrap{
-	background: url(../icons/border.png) 8px 0 repeat;
-	padding:5px;
-	margin: 10px auto 0 auto;
-	box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	border-radius: 5px;
-	color: #555;text-shadow:none;
-}
-#send_email_feedback{
-	background: #fff;
-	padding: 20px 0 20px 0;
-}
-
-#send_email_feedback a:hover{
-	text-decoration:none;
-	color:#000;
-}
-.tc{
-	text-align: center;
-}
-.w500{
-	padding:10px;color: #999; font-size: 12px;border-top: 1px solid #eee;
-}
-
-.w1000 li{
-	margin-top:5px;
-	margin-bottom:5px;
-}
-
-#qr{
-	margin-left:12px;
-	display:none;
-	
+.donate{
+	font-weight:bold;
+	cursor:pointer;
 }
