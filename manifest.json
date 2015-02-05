@@ -29,6 +29,6 @@
     "options.html"
   ],
   "permissions": [
-    "http://*.baidu.com/*"
+    "http://*.baidu.com/*", "https://*.baidu.com/*", "http://*.google.com/*", "https://*.google.com/*"
   ]
 }
