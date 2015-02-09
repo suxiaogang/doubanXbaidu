@@ -13,11 +13,6 @@ input[type="text"]{
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	border-collapse: separate;
-	border-image-outset: 0px;
-	border-image-repeat: stretch;
-	border-image-slice: 100%;
-	border-image-source: none;
-	border-image-width: 1;
 	border-left-color: #CCC;
 	border-left-style: solid;
 	border-left-width: 1px;
@@ -31,17 +26,11 @@ input[type="text"]{
 	border-top-width: 1px;
 	bottom: auto;
 	box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
-	box-sizing: content-box;
-	caption-side: top;
-	clear: none;
 	clip: auto;
 	color: #555;
 	cursor: auto;
-	direction: ltr;
 	display: inline-block;
-	empty-cells: show;
 	float: none;
-	font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
 	font-style: normal;
 	font-variant: normal;
@@ -50,19 +39,9 @@ input[type="text"]{
 	left: auto;
 	letter-spacing: normal;
 	line-height: 20px;
-	list-style-image: none;
-	list-style-position: outside;
-	list-style-type: disc;
 	margin-bottom: 10px;
 	margin-left: 0px;
 	margin-right: 3px;
-	margin-top: 0px;
-	max-height: none;
-	max-width: none;
-	min-height: 0px;
-	min-width: 0px;
-	opacity: 1;
-	orphans: auto;
 	outline-color: #555;
 	outline-offset: 0px;
 	outline-style: none;
@@ -76,18 +55,6 @@ input[type="text"]{
 	page-break-after: auto;
 	page-break-before: auto;
 	page-break-inside: auto;
-	position: static;
-	resize: none;
-	right: auto;
-	speak: normal;
-	table-layout: auto;
-	text-align: start;
-	text-decoration: none solid rgb(85, 85, 85);
-	text-indent: 0px;
-	text-overflow: clip;
-	text-shadow: none;
-	text-transform: none;
-	top: auto;
 	transition-delay: 0s, 0s;
 	transition-duration: 0.2s, 0.2s;
 	transition-property: border, box-shadow;
@@ -96,12 +63,10 @@ input[type="text"]{
 	vertical-align: middle;
 	visibility: visible;
 	white-space: normal;
-	widows: auto;
 	width: 270px;
 	word-break: normal;
 	word-spacing: 0px;
 	word-wrap: normal;
-	z-index: auto;
 }
 
 .badge{
@@ -140,4 +105,10 @@ input[type="text"]{
 #searchIcon{
 	margin-left:260px;
 	vertical-align: middle;
+}
+.bdresult a{
+	border-radius:1px;
+	padding-left: 4px;
+	padding-right: 4px;
+	-webkit-transition:all .4s
 }

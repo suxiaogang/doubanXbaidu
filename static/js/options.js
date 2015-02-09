@@ -29,6 +29,8 @@ function toggleUL() {
 	});
 }
 
+var doubanXbaiduData;
+
 $(document).ready(function(){
 	$(".close").click(closeWindow);
 	$("#avatar").click(douyou);
@@ -40,9 +42,32 @@ $(document).ready(function(){
 	var version = chrome.runtime.getManifest().version;
 	$(".current_version").text(version);
 	
-	$('.donate').on('click', function () {
+	chrome.storage.local.get('dbEngine', function (result) {
+        var dbe = result.dbEngine;
+        if(dbe == undefined) {
+        	chrome.storage.local.set({'dbEngine': 'Google'});
+        } else {
+        	$('input:radio[name="engine"][value='+dbe+']').prop("checked", true);
+        }
+    });
+	
+	$('.alipay').on('click', function () {
 		event.preventDefault();
-		swal({title: "", text: "扫描支付宝向开发者赞助一点小心意", imageUrl: "http://ww4.sinaimg.cn/large/5fd37818jw1eoyj39p6t5j207i07i3zb.jpg", imageSize: "180x180"});
+		swal({title: "", text: "请扫描支付宝二维码", imageUrl: "http://ww4.sinaimg.cn/large/5fd37818jw1eoyj39p6t5j207i07i3zb.jpg", imageSize: "280x280"});
+	});
+	
+	$('.btn-primary').on('click', function () {
+		var engine = $('input:radio[name="engine"]:checked').val();
+		event.preventDefault();
+		chrome.storage.local.set({'dbEngine': engine});
+		swal({title: "", text:"您的设置已经保存!", type:"success", timer: 2500});
+	});
+	
+	var $tab_li = $('.pill-tabs li');
+	$tab_li.click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		var index = $tab_li.index(this);
+		$('#send_email_feedback > div').eq(index).show().siblings().hide();
 	});
 	
 });

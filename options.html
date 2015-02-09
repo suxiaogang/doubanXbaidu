@@ -12,35 +12,58 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 nav">
+		<div class="col-md-12 page-content">
 
-		        <div class="page-header">
-					<span>选项</span>
-					<button type="button" class="close" title="关闭">&times;</button>
-		        </div>
+				<button type="button" class="close" title="关闭">&times;</button>
+				
+		        <ul class="pill-tabs" id="move-animate-top">
+		          <li class="active"><a href="#">选项</a></li>
+				  <li><a href="#">关于</a></li>
+				  <li ><a href="#">捐助</a></li>
+				</ul>
 				
 				<div id="send_email_feedback_wrap" style="">
 						<div id="send_email_feedback">
-							<p class="text-center"><img id="github" src="static/icons/github.png"/></p>
-							<div class="w500 ml20 mr20">
-								<ol class="w1000">
+							<div class="slide-nav animated fadeInUp" style="min-height:150px;">
+								<p>搜索引擎选择:</p>
+								<ul class="abgne-menu-20140109-1">
+							  		<li><input type="radio" id="male" name="engine" value="Google"><label for="male">Google</label></li>
+							  		<li><input type="radio" id="female" name="engine" value="Bing"><label for="female">Bing</label></li>
+								</ul>
+								<div><span style="color:red;">注意</span> : 因为中国大陆长城防火墙(Great FireWall)的限制，Google等网站在中国大陆默认不能被正常访问<br><br>
+								选择Google作为默认搜索引擎时，请确保您的Chrome浏览器已经通过VPN/ShadowSocks等辅助工具可以正常访问Google</div>
+								<br>
+								<p class="text-center">
+							  		<input type="submit" class="btn btn-primary btn-round btn" value="保存我的设置">
+							    </p>
+							</div>
+							<div class="not slide-nav animated fadeInUp">
+								<p>这是一款在豆瓣电影,音乐,读书条目页面实时显示相关资源在百度网盘搜索结果的Chrome浏览器扩展</p>
+								<p>轻量级:大小只有不到200k</p>
+								<p><b>绝无</b>任何广告和植入代码,并且源码开放</p>
+								<hr>
+								<ul class="">
 									<li>喜欢这个插件? 
 									<a href="https://chrome.google.com/webstore/detail/%E8%B1%86%E7%93%A3%2B%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/phnkdkohjfmfbokjogjfbfmcfocfkebk/reviews?hl=zh-CN&gl=CN" target="_blank">来一发好评吧!</a></li>
-									<li>搜索结果显示不正常, <a href="https://chrome.google.com/webstore/support/phnkdkohjfmfbokjogjfbfmcfocfkebk?hl=zh-CN&gl=CN" target="_blank">这里提交反馈</a></li>
-									<li>对源码感兴趣? 
-										<a href="https://github.com/Suxiaogang/doubanXbaidu" target="_blank">欢迎star / fork / pull request</a></li>
+									<li>资源搜索结果显示不正常， <a href="https://chrome.google.com/webstore/support/phnkdkohjfmfbokjogjfbfmcfocfkebk?hl=zh-CN&gl=CN" target="_blank">这里提交反馈</a></li>
+									<li>对源码感兴趣? 欢迎去GitHub
+										<a href="https://github.com/Suxiaogang/doubanXbaidu" target="_blank">star / fork / pull request</a></li>
 									<li>有意见/建议和想加入的新功能? 请通过 
 										<a href="mailto:outmanprejudice@gmail.com" target="_blank">电子邮件</a> 
 									|	<a href="http://www.douban.com/people/gangsta/" target="_blank">豆瓣</a> 
 									|	<a href="http://weibo.com/47660666" target="_blank">微博</a>
 									|	<a id="toggleWechat" style="cursor:pointer;">微信</a> 
 									  与我联系</li>
-									<li>想对开发者捐助一点表(mai)示(bei)感(ka)谢(fei)? <span class="donate">请戳这里！</span></li>
-								</ol>
+								</ul>
+							</div>
+							<div class="not slide-nav animated fadeInUp">
+								<b style="color:#808080">想对开发者捐助一点您的心意表(mǎi)示(bēi)感(kā)谢(fēi)?</b><br>
+								<img class="alipay" src="http://ww4.sinaimg.cn/large/5fd37818jw1eoyj39p6t5j207i07i3zb.jpg"/>
+								请使用支付宝钱包App扫描二维码赞助作者
 							</div>
 							
 							<div id="qr">
-								<img src="static/icons/QR.png" width="175" height="175">
+								<img src="http://ww2.sinaimg.cn/large/5fd37818jw1ep352vgrgzj204v04vglt.jpg" width="175" height="175">
 								<img src="http://img3.douban.com/pics/movie/qr_help.png" width="200">
 							</div>
 								
