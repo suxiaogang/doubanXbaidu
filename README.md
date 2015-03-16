@@ -1,7 +1,10 @@
 #####在豆瓣 书/影/音 条目页面即时显示百度网盘搜索结果
 
 
-安装请访问[Chrome Webstore](https://chrome.google.com/webstore/detail/%E8%B1%86%E7%93%A3%20%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/phnkdkohjfmfbokjogjfbfmcfocfkebk?hl=zh-CN&gl=CN)~~或者[Github releases(.crx)](https://github.com/Suxiaogang/doubanXbaidu/releases)~~
+<a href="https://chrome.google.com/webstore/detail/%E8%B1%86%E7%93%A3%20%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/phnkdkohjfmfbokjogjfbfmcfocfkebk?hl=zh-CN&gl=CN" target="_blank">
+	<img width="300px" src="http://ww3.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
+</a>
+
 
 ####更新记录
 ```

@@ -9,7 +9,7 @@
 var currentURL = document.URL;
 var do_not_inject_page = new Array(
 		"discussion","doulist","collections","wishes","review","mupload","all_photos",
-		"new_review","comments","group_collectors","offers","new_offer","doings","questions");
+		"new_review","comments","group_collectors","offers","new_offer","doings","questions","photos");
 
 var flag = true;
 for (var i = 0; i < do_not_inject_page.length; i++) {
