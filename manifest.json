@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "豆瓣+百度网盘™",
   "description": "在豆瓣电影,音乐,读书条目页面显示百度网盘搜索结果",
-  "version": "1.91",
+  "version": "2.0",
   "icons": {
     "16": "static/icons/icon_128.png",
     "48": "static/icons/icon_128.png",
@@ -13,7 +13,10 @@
       "matches": [
     	"http://*.movie.douban.com/subject/*",
     	"http://*.book.douban.com/subject/*",
-    	"http://*.music.douban.com/subject/*"
+    	"http://*.music.douban.com/subject/*",
+    	"https://*.movie.douban.com/subject/*",
+    	"https://*.book.douban.com/subject/*",
+    	"https://*.music.douban.com/subject/*"
       ],
       "css": ["static/css/base.css", "static/css/sweet-alert.min.css"],
       "js": ["static/js/jquery.js", "static/js/sweet-alert.min.js", "static/js/contentscript.js"]
@@ -26,6 +29,6 @@
     "options.html"
   ],
   "permissions": [
-    "storage", "http://*.baidu.com/*", "http://*.bing.com/*", "http://*.google.com/*", "https://*.google.com/*"
+    "storage", "http://*.baidu.com/*", "http://*.bing.com/*", "https://*.baidu.com/*", "https://*.bing.com/*", "http://*.google.com/*", "https://*.google.com/*"
   ]
 }

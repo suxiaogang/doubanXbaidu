@@ -53,7 +53,7 @@ $(document).ready(function(){
 	
 	$('.alipay').on('click', function () {
 		event.preventDefault();
-		swal({title: "", text: "请扫描支付宝二维码", imageUrl: "http://ww4.sinaimg.cn/large/5fd37818jw1eoyj39p6t5j207i07i3zb.jpg", imageSize: "280x280"});
+		swal({title: "", text: "请扫描微信支付二维码", imageUrl: "http://ww2.sinaimg.cn/large/5fd37818jw1ex6kba7xq2j20ba0b6q4e.jpg", imageSize: "280x280"});
 	});
 	
 	$('.btn-primary').on('click', function () {

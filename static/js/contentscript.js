@@ -1,7 +1,7 @@
 /* 
-* @Author: sam_su
-* @Date:   2014-05-09 10:20
-* =_=! Sorry! I write JavaScript code with a lit bit of Java style
+* @Author:	sam_su
+* @Date:	2014-05-09 10:20
+* @Update:	2016-03-11
 */
 
 //过滤掉不显示注入结果的页面.
@@ -9,7 +9,7 @@
 var currentURL = document.URL;
 var do_not_inject_page = new Array(
 		"discussion","doulist","collections","wishes","review","mupload","all_photos",
-		"new_review","comments","group_collectors","offers","new_offer","doings","questions","photos");
+		"new_review","comments","group_collectors","offers","new_offer","doings","questions","photos","cinema");
 
 var flag = true;
 for (var i = 0; i < do_not_inject_page.length; i++) {
@@ -103,11 +103,16 @@ function inject(engine){
 			}
 		});
 	} else if(engine == "Bing"){
-		url = 'http://cn.bing.com/search?q='+dck+'+site%3apan.baidu.com';
+		url = 'https://cn.bing.com/search?q='+dck+'+site%3apan.baidu.com';
 		$.ajax({
 			url:url,
 			dataType: "html",
 			success: function(data){
+				console.log(data.results);
+				if(data.results == undefined){
+					$("ul.bdresult").append('<li>未能找到' + keyword + '的相关结果</li>');
+					return;
+				}
 				for(var i = 0; i < 5; i ++){
 					var contentX = $('#b_results > li:eq('+i+') a', data);
 					var tempURL = contentX.attr('href');
@@ -161,7 +166,7 @@ function inject(engine){
 			if(engine == "Google"){
 				url_final = 'https://www.google.com/search?q='+ queryWords +'+site:pan.baidu.com';
 			} else if(engine == "Bing"){
-				url_final = 'http://cn.bing.com/search?q='+dck+'+site%3apan.baidu.com';
+				url_final = 'https://cn.bing.com/search?q='+dck+'+site%3apan.baidu.com';
 			}
 			window.open(url_final);
 		}
