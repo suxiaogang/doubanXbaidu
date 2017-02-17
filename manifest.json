@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "豆瓣+百度网盘™",
   "description": "在豆瓣电影,音乐,读书条目页面显示百度网盘搜索结果",
-  "version": "2.0",
+  "version": "2.1",
   "icons": {
     "16": "static/icons/icon_128.png",
     "48": "static/icons/icon_128.png",
@@ -25,7 +25,7 @@
   "options_page": "options.html",
   "web_accessible_resources": [
     "static/icons/icon_128.png",
-    "static/icons/-.gif",
+    "static/icons/bn_srh_1.png",
     "options.html"
   ],
   "permissions": [

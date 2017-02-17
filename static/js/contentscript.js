@@ -1,4 +1,4 @@
-/* 
+/*
 * @Author:	sam_su
 * @Date:	2014-05-09 10:20
 * @Update:	2016-03-11
@@ -47,22 +47,21 @@ function inject(engine){
 	var keyword = title.replace( '(豆瓣)', '' ).trim();
 	var dck = encodeURIComponent(keyword);
 	var imgURL = chrome.extension.getURL("static/icons/icon_128.png");
-	
-	var imgPlus = "http://img3.douban.com/pics/add-doulist.gif";
-	var imgMinus = chrome.extension.getURL("static/icons/-.gif");
+
+	var imgSearch = chrome.extension.getURL("static/icons/bn_srh_1.png");
 
 	var optionURL = chrome.extension.getURL('options.html');
-	
-	var html_title =  '<div id="dbbd" class="da3" style="margin-bottom:0px;padding-bottom:1px;background-color:#F0F3F5;">'
+
+	var html_title =  '<div id="dbbd" class="da3" style="margin-bottom:0px;padding-bottom:1px;background-color:#F4F4EC;">'
 		+ '<dl><dt style="display:inline;font-size:11px;color:#888;font-weight:bold;">'
 		+ '<img id="toggleIMG" src="'+imgURL+'" style="margin-bottom:-3px;margin-right:5px;width:16px;cursor:pointer;" onclick="javascript:window.open('+"'"+optionURL+"'"+');">'
-		+ '<b style="color:#888">' + keyword + '</b> 的搜索结果 (来源:'+ engine +')</dt>' 
+		+ '<b style="color:#888">' + keyword + '</b> 的搜索结果 (来源:'+ engine +')</dt>'
 		/*+ '<a href="http://www.baidu.com/s?wd='+dck+'+site%3Apan.baidu.com" target="_blank">全部</a>'*/
-		+ '<img style="float:right;margin-top:4px;cursor:pointer;opacity:0.3;" id="toggleIcon" src="'+ imgPlus +'" title="试试其他关键字?">'
+		+ '<i id="toggleIcon" title="试试其他关键字?" style="font-weight:500;margin-left:8px;color:#b1b1b1;">+</i>'
 
 	    + '<div id="baidu-search" style="display:none">'
 		+ '	<input id="query-keywords" type="text">'
-		+ '	<img id="searchIcon" src="http://img3.douban.com/pics/icon/bn_srh_1.png" style="cursor:pointer;margin-top:-70px;">'
+		+ '	<img id="searchIcon" src="'+imgSearch+'" style="cursor:pointer;margin-top:-65px;">'
 		+ '</div>'
 
 		+ '</dl></div>';
@@ -76,27 +75,32 @@ function inject(engine){
 			url:url,
 			dataType: "json",
 			success: function(data){
-				//console.log(data.results);
+				console.log(data.results);
 				var results = data.results;
 				var pickNum = results.length > 5 ? 5 : results.length;
 				var arrayNew = getRandomArrayElements(results, pickNum);
-				for(var i = 0; i < pickNum; i ++){
-					var content = arrayNew[i].contentNoFormatting;
-					var tempTitle = arrayNew[i].titleNoFormatting.replace("|百度云网盘-分享无限制", "").replace("_免费高速下载", "").replace("|百度云网盘-分享无限制", "");//
-					var tempURL = arrayNew[i].unescapedUrl;
-					//搜索结果不为空时,加载显示...
-					if (tempTitle != "") {
-						$("ul.bdresult").append('<li><span class="badge badge-error">'+ (i+1) +'</span><a href='+tempURL+' target="_blank">' + tempTitle + '</li>');
-						$("ul.bdresult").append('<li style="color:#AEAEAE">' + content + '</li>');
-					} else if (tempTitle == "" && i == 1) {
-						$("ul.bdresult").append('<li>哇哦~,可能是该资源过于冷门,什么都没找到呀...</li>');
-						return;
-					} else {
-						$("ul.bdresult").append('<li style="text-align:center">未找到更多搜索结果</li>');
-						return;
-					}
-				};
-				
+				if (results.length == 0) {
+					$("ul.bdresult").append('<li>未能找到' + keyword + '的相关结果</li>');
+				} else {
+					for(var i = 0; i < pickNum; i ++){
+						var content = arrayNew[i].contentNoFormatting;
+						var tempTitle = arrayNew[i].titleNoFormatting.replace("|百度云网盘-分享无限制", "").replace("_免费高速下载", "").replace("|百度云网盘-分享无限制", "");//
+						var tempURL = arrayNew[i].unescapedUrl;
+						//搜索结果不为空时,加载显示...
+						if (tempTitle != "") {
+							$("ul.bdresult").append('<li><span class="badge badge-error">'+ (i+1) +'</span><a href='+tempURL+' target="_blank">' + tempTitle + '</li>');
+							$("ul.bdresult").append('<li style="color:#AEAEAE">' + content + '</li>');
+						} else if (tempTitle == "" && i == 1) {
+							$("ul.bdresult").append('<li>哇哦~,可能是该资源过于冷门,什么都没找到呀...</li>');
+							return;
+						} else {
+							$("ul.bdresult").append('<li style="text-align:center">未找到更多搜索结果</li>');
+							return;
+						}
+					};
+				}
+
+
 			},
 			error: function(responseData, textStatus, errorThrown) {
 				$("ul.bdresult").append('<li>未能找到' + keyword + '的相关结果</li>');
@@ -108,19 +112,20 @@ function inject(engine){
 			url:url,
 			dataType: "html",
 			success: function(data){
-				console.log(data.results);
-				if(data.results == undefined){
-					$("ul.bdresult").append('<li>未能找到' + keyword + '的相关结果</li>');
-					return;
-				}
+				console.log(data);
 				for(var i = 0; i < 5; i ++){
 					var contentX = $('#b_results > li:eq('+i+') a', data);
 					var tempURL = contentX.attr('href');
 					var tempTitle = contentX.text();
 					var contentY = $('#b_results > li:eq('+i+') p', data);
 					var content = contentY.text();
+
+					console.log(contentX + " | " + tempURL + " | "
+						 + tempTitle + " | " + contentY + " | " + content);
+
 					//搜索结果不为空时,加载显示...
 					if (tempTitle != "") {
+						tempTitle = tempTitle.replace("免费高速下载|百度云 网盘-分享无限制", "").replace("免费高速下载", "").replace("|百度云 网盘-分享无限制", "");//
 						$("ul.bdresult").append('<li><span class="badge badge-error">'+ (i+1) +'</span><a href='+tempURL+' target="_blank">' + tempTitle + '</li>');
 						$("ul.bdresult").append('<li style="color:#AEAEAE">' + content + '</li>');
 					} else if (tempTitle == "" && i == 1) {
@@ -141,17 +146,17 @@ function inject(engine){
 	var html_body_end = '</ul></div>';
 
 	$('.aside').prepend( html_title + html_body_start + html_body_end);
-	
+
 	var toggle_more_button = document.getElementById("toggleIcon");
 	toggle_more_button.addEventListener("click", function() {
-	  var origsrc = $(this).attr('src');
-        var src = '';
-        if (origsrc == imgPlus) {
-        	src = imgMinus;
+	  var origsrc = $(this).html();
+	  var str = "";
+        if (origsrc == "+") {
+        	str = "-";
         } else {
-        	src = imgPlus;
+        	str = "+";
         }
-        $(this).attr('src', src);
+        $(this).html(str);
 	  $('#baidu-search').fadeToggle("fast");
 	}, false);
 
