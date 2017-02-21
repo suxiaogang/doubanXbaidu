@@ -1,7 +1,7 @@
 /*
 * @Author:	sam_su
 * @Date:	2014-05-09 10:20
-* @Update:	2016-03-11
+* @Update:	2017-02-21
 */
 
 //过滤掉不显示注入结果的页面.
@@ -47,25 +47,22 @@ function inject(engine){
 	var keyword = title.replace( '(豆瓣)', '' ).trim();
 	var dck = encodeURIComponent(keyword);
 	var imgURL = chrome.extension.getURL("static/icons/icon_128.png");
-
 	var imgSearch = chrome.extension.getURL("static/icons/bn_srh_1.png");
-
 	var optionURL = chrome.extension.getURL('options.html');
-
-	var html_title =  '<div id="dbbd" class="da3" style="margin-bottom:0px;padding-bottom:1px;background-color:#F4F4EC;">'
+	var html_title =  '<div id="dbbd" class="da3" style="margin-bottom:0px;padding-bottom:1px;background-color:rgb(203, 226, 216);border-top-left-radius:5px;border-top-right-radius:5px;">'
 		+ '<dl><dt style="display:inline;font-size:11px;color:#888;font-weight:bold;">'
 		+ '<img id="toggleIMG" src="'+imgURL+'" style="margin-bottom:-3px;margin-right:5px;width:16px;cursor:pointer;" onclick="javascript:window.open('+"'"+optionURL+"'"+');">'
-		+ '<b style="color:#888">' + keyword + '</b> 的搜索结果 (来源:'+ engine +')</dt>'
+		+ '<b style="color:#888;background:rgb(247, 245, 177);padding: 1px 4px;border-radius:2px;">' + keyword + '</b> 的搜索结果 (来源:'+ engine +')</dt>'
 		/*+ '<a href="http://www.baidu.com/s?wd='+dck+'+site%3Apan.baidu.com" target="_blank">全部</a>'*/
 		+ '<i id="toggleIcon" title="试试其他关键字?" style="font-weight:500;margin-left:8px;color:#b1b1b1;">+</i>'
 
 	    + '<div id="baidu-search" style="display:none">'
 		+ '	<input id="query-keywords" type="text">'
-		+ '	<img id="searchIcon" src="'+imgSearch+'" style="cursor:pointer;margin-top:-65px;">'
+		+ '	<img id="searchIcon" src="'+imgSearch+'" style="cursor:pointer;margin-top:-40px;">'
 		+ '</div>'
 
 		+ '</dl></div>';
-	var html_body_start = '<div class="indent" id="db-doulist-section" style="padding-left:5px;padding-right:5px;padding-bottom:8px;border:1px #F0F3F5 solid;border-top:none;"><ul class="bs bdresult">';
+	var html_body_start = '<div class="indent" id="db-doulist-section" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;padding-left:5px;padding-right:5px;padding-bottom:8px;border:1px #F0F3F5 solid;border-top:none;background-color:rgb(247, 242, 239);"><ul class="bs bdresult">';
 
 	//var url='http://www.baidu.com/s?wd='+dck+'+site%3Apan.baidu.com';
 	var url = '';
@@ -75,7 +72,6 @@ function inject(engine){
 			url:url,
 			dataType: "json",
 			success: function(data){
-				console.log(data.results);
 				var results = data.results;
 				var pickNum = results.length > 5 ? 5 : results.length;
 				var arrayNew = getRandomArrayElements(results, pickNum);
@@ -100,7 +96,6 @@ function inject(engine){
 					};
 				}
 
-
 			},
 			error: function(responseData, textStatus, errorThrown) {
 				$("ul.bdresult").append('<li>未能找到' + keyword + '的相关结果</li>');
@@ -112,16 +107,12 @@ function inject(engine){
 			url:url,
 			dataType: "html",
 			success: function(data){
-				console.log(data);
 				for(var i = 0; i < 5; i ++){
 					var contentX = $('#b_results > li:eq('+i+') a', data);
 					var tempURL = contentX.attr('href');
 					var tempTitle = contentX.text();
 					var contentY = $('#b_results > li:eq('+i+') p', data);
 					var content = contentY.text();
-
-					console.log(contentX + " | " + tempURL + " | "
-						 + tempTitle + " | " + contentY + " | " + content);
 
 					//搜索结果不为空时,加载显示...
 					if (tempTitle != "") {
@@ -146,6 +137,7 @@ function inject(engine){
 	var html_body_end = '</ul></div>';
 
 	$('.aside').prepend( html_title + html_body_start + html_body_end);
+	$('.bdresult li:last').css('border-bottom', 'none');
 
 	var toggle_more_button = document.getElementById("toggleIcon");
 	toggle_more_button.addEventListener("click", function() {
